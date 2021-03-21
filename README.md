@@ -1,4 +1,4 @@
-# IPC
+# DMC-IPC
 IAD position calculator
 
 This is an IAD position calculator for the [IAD model].
