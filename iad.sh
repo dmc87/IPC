@@ -34,7 +34,7 @@ for x in $(seq 1 $blade); do							# For each blade you have,
 			((position=position+1))					# leaving 1 dead on the tail at 75.
 		else
 			echo "V$vert $position $iad $x/$i" >> IAD_$iad.txt 	# This line outputs all other positions,
-			((position=position+1))					# That are mot 25, 50 and 72.
+			((position=position+1))					# That are not 25, 50 and 72.
 		fi
 	done
 done
