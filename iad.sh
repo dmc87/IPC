@@ -3,13 +3,13 @@
 # Darcy McIntyre 21/03/2021 
 # Based on the code I wrote in Python3
 
-echo  "How many blades are on the IAD? "
+echo "How many blades are on the IAD? "
 read blade
-echo  "What vertical are the tails located at? (A, B, C etc) "
+echo "What vertical are the tails located at? (A, B, C etc) "
 read vert
-echo  "Where pair on the vertical do the tails start? (1, 101, 201 etc) "
+echo "Where pair on the vertical do the tails start? (1, 101, 201 etc) "
 read position
-echo  "What is the IAD called? "
+echo "What is the IAD called? "
 read iad
 
 
