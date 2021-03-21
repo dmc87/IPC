@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Darcy McIntyre, D728212
+# Darcy McIntyre 21/03/2021 
 # Based on the code I wrote in Python3
 
-echo  "How many blades on the IAD? "
+echo  "How many blades are on the IAD? "
 read blade
-echo  "What verticle are the tails located at? "
-read verticle
-echo  "Where on the verticle do the tails start? "
+echo  "What vertical are the tails located at? (A, B, C etc) "
+read vert
+echo  "Where pair on the vertical do the tails start? (1, 101, 201 etc) "
 read position
 echo  "What is the IAD called? "
 read iad
@@ -15,26 +15,26 @@ read iad
 
 blade_address=72
 
-for x in $(seq 1 $blade); do					# For each blade you have
-	for i in $(seq 1 $blade_address); do			# and for each position e.g 1/1 or 1/23
-		if [ $i -eq 25 ]; then				# 25 is not in use, continue at next verticle position
-			echo "V$verticle $position NOT IN USE" >> IAD_$iad.txt
+for x in $(seq 1 $blade); do							# For each blade you have,
+	for i in $(seq 1 $blade_address); do					# and for each address e.g 1/1 or 1/23, calculate position.
+		if [ $i -eq 25 ]; then						# Tail pair 25 is not in use, continue  x/25 at next pair.
+			echo "V$vert $position NOT IN USE" >> IAD_$iad.txt
 			((position=position+1))
-			echo "V$verticle $position $iad $x/$i" >> IAD_$iad.txt
+			echo "V$vert $position $iad $x/$i" >> IAD_$iad.txt
 			((position=position+1))
-		elif [ $i -eq 50 ]; then			# 50 is not in use, continue at next verticle position
-			echo "V$verticle $position NOT IN USE" >> IAD_$iad.txt
+		elif [ $i -eq 50 ]; then					# Tail pair 50 is not in use, continue x/50 at next pair.
+			echo "V$vert $position NOT IN USE" >> IAD_$iad.txt
 			((position=position+1))
-			echo "V$verticle $position $iad $x/$i" >> IAD_$iad.txt
+			echo "V$vert $position $iad $x/$i" >> IAD_$iad.txt
 			((position=position+1))
-		elif [ $i -eq 72 ]; then			# 72 is in use, but there is a pair after 72 on the tail
-			echo "V$verticle $position $iad $x/$i"	>> IAD_$iad.txt # that is not in use (tail = 25 pairs)
-			((position=position+1))			# so we skip to the next blade after the pair not in use
-			echo "V$verticle $position NOT IN USE" >> IAD_$iad.txt
-			((position=position+1))
+		elif [ $i -eq 72 ]; then					# 72 is in use, but there is a pair after 72 on the tail
+			echo "V$vert $position $iad $x/$i" >> IAD_$iad.txt 	# that is not in use (tail = 25 pairs).
+			((position=position+1))					# So we go to the next blade after the pair not in use,
+			echo "V$vert $position NOT IN USE" >> IAD_$iad.txt	# because 72 is at 74 (25 at 26, 50 at 52),
+			((position=position+1))					# leaving 1 dead on the tail at 75.
 		else
-			echo "V$verticle $position $iad $x/$i"	>> IAD_$iad.txt # This is for a regular position
-			((position=position+1))
+			echo "V$vert $position $iad $x/$i" >> IAD_$iad.txt 	# This line outputs all other positions,
+			((position=position+1))					# That are mot 25, 50 and 72.
 		fi
 	done
 done
