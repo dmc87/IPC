@@ -14,6 +14,6 @@ relative to a 10 pair krone block on a vertical & starting range that you specif
 
 The positions are added to a .txt file and named IAD_[the name of your IAD here].txt
 
-I made this as a bash script based of a Python3 code I made earlier.
+I made this as a bash script based off a Python3 code I made earlier.
 
 Darcy
