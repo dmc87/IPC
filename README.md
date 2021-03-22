@@ -17,3 +17,8 @@ The positions are added to a .txt file and named IAD_[the name of your IAD here]
 I made this as a bash script based off a Python3 code I made earlier.
 
 Darcy
+
+** COMING SOON **
+- Input validation
+- Python version
+- PowerShell version (maybe)
